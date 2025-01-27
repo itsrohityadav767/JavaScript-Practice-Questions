@@ -5,3 +5,5 @@ function sortAcending(num){
 }
 
 console.log(sortAcending([5,3,10,8]));
+
+
