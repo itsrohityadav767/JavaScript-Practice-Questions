@@ -1,8 +1,7 @@
 function isPalindrome(str){
+    str=str.toLowerCase().replace(/\W/g, "");
     let original = str;
-    str = str.split("");
-    str = str.reverse();
-    str = str.join("");
+    str = str.split("").reverse().join("")
 
     if( original  == str)
         return true;
