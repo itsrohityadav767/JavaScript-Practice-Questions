@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Withdrawal</title>
+</head>
+<body>
+    <script>
+        function atmWithdraw(balance, amount) {
+            if (amount > balance) {
+                console.log("Insufficient balance!");
+                return balance;
+            }
+
+            if (amount % 10 !== 0) {
+                console.log("Please enter an amount in multiples of 10.");
+                return balance;
+            }
+
+            let notes100 = 0, notes50 = 0, notes20 = 0;
+            let remainingAmount = amount;
+
+            if (remainingAmount >= 100) {
+                notes100 = Math.floor(remainingAmount / 100);
+                remainingAmount %= 100;
+            }
+
+            if (remainingAmount >= 50) {
+                notes50 = Math.floor(remainingAmount / 50);
+                remainingAmount %= 50;
+            }
+
+            if (remainingAmount >= 20) {
+                notes20 = Math.floor(remainingAmount / 20);
+                remainingAmount %= 20;
+            }
+
+            if (remainingAmount !== 0) {
+                console.log("ATM can dispense only ₹100, ₹50, and ₹20 notes. Enter a valid amount.");
+                return balance;
+            }
+
+            balance -= amount;
+            console.log(`Transaction successful! Remaining balance: ₹${balance}`);
+            console.log(`Notes dispensed: ₹100 x ${notes100}, ₹50 x ${notes50}, ₹20 x ${notes20}`);
+            return balance;
+        }
+
+        let balance = 5000;
+        let amount = parseInt(prompt("Enter withdrawal amount: "), 10);
+        balance = atmWithdraw(balance, amount);
+    </script>
+</body>
+</html>
